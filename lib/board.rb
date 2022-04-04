@@ -8,6 +8,10 @@ class Board
     def draw_board
         pp grid
     end
+
+    def setup_board
+        
+    end
 end
 
 b = Board.new
