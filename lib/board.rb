@@ -15,7 +15,7 @@ class Board
     end
 
     def draw_board
-        pp grid
+        puts grid
     end
 
     
@@ -64,3 +64,4 @@ end
 
 b = Board.new
 b.draw_board
+
