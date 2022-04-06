@@ -1,3 +1,11 @@
+require_relative "../lib/piece.rb"
+require_relative "../lib/bishop.rb"
+require_relative "../lib/king.rb"
+require_relative "../lib/knight.rb"
+require_relative "../lib/pawn.rb"
+require_relative "../lib/queen.rb"
+require_relative "../lib/rook.rb"
+
 class Board
     attr_accessor :grid
     
@@ -38,7 +46,7 @@ class Board
 
         #white pawns
         for num in 0..7 do
-            set_piece(Pawn.new(:white), 1, num)
+            set_piece(Pawn.new(:white), 6, num)
         end
 
         #white side
@@ -55,6 +63,4 @@ class Board
 end
 
 b = Board.new
-b.draw_board
-b. set_piece('X', 0,0)
 b.draw_board
