@@ -47,41 +47,43 @@ class Board
 
     def setup_board
         #black side
-        set_piece(Rook.new(:black), 0, 0)
-        set_piece(Knight.new(:black), 0, 1)
-        set_piece(Bishop.new(:black), 0, 2)
-        set_piece(Queen.new(:black), 0, 3)
-        set_piece(King.new(:black), 0, 4)
-        set_piece(Bishop.new(:black), 0, 5)
-        set_piece(Knight.new(:black), 0, 6)
-        set_piece(Rook.new(:black), 0, 7)
+        set_piece(Rook.new(:black, self), 0, 0)
+        set_piece(Knight.new(:black, self), 0, 1)
+        set_piece(Bishop.new(:black, self),  0, 2)
+        set_piece(Queen.new(:black, self), 0, 3)
+        set_piece(King.new(:black, self), 0, 4)
+        set_piece(Bishop.new(:black, self), 0, 5)
+        set_piece(Knight.new(:black, self), 0, 6)
+        set_piece(Rook.new(:black, self), 0, 7)
         
         #black pawns
         for num in 0..7 do
-            set_piece(Pawn.new(:black), 1, num)
+            set_piece(Pawn.new(:black, self), 1, num)
         end
 
         #white pawns
         for num in 0..7 do
-            set_piece(Pawn.new(:white), 6, num)
+            set_piece(Pawn.new(:white, self), 6, num)
         end
 
         #white side
-        set_piece(Rook.new(:white), 7, 0)
-        set_piece(Knight.new(:white), 7, 1)
-        set_piece(Bishop.new(:white), 7, 2)
-        set_piece(Queen.new(:white), 7, 3)
-        set_piece(King.new(:white), 7, 4)
-        set_piece(Bishop.new(:white), 7, 5)
-        set_piece(Knight.new(:white), 7, 6)
-        set_piece(Rook.new(:white), 7, 7)
+        set_piece(Rook.new(:white, self), 7, 0)
+        set_piece(Knight.new(:white, self), 7, 1)
+        set_piece(Bishop.new(:white, self), 7, 2)
+        set_piece(Queen.new(:white, self), 7, 3)
+        set_piece(King.new(:white, self), 7, 4)
+        set_piece(Bishop.new(:white, self), 7, 5)
+        set_piece(Knight.new(:white, self), 7, 6)
+        set_piece(Rook.new(:white, self), 7, 7)
 
     end
 end
 
 b = Board.new
 
-b.set_piece(Rook.new(:black), 7, 0)
-b.show_board
+b.set_piece(Rook.new(:black, self), 7, 0)
+#b.show_board
+
+pp b.grid[7][0].location
 
 
