@@ -13,7 +13,7 @@ class Board
     
     def initialize
         @grid = Array.new(8){Array.new(8, nil)}
-        #setup_board
+        
     end
 
     def show_board
@@ -40,50 +40,26 @@ class Board
         grid[row][col] = nil
     end
 
-    def occupied?(row,column)
-        return true if !grid[row][column].nil?
-        false
+    def empty?(row, column)
+        return true if grid[row][column].nil?
     end
 
-    def setup_board
-        #black side
-        set_piece(Rook.new(:black, self), 0, 0)
-        set_piece(Knight.new(:black, self), 0, 1)
-        set_piece(Bishop.new(:black, self),  0, 2)
-        set_piece(Queen.new(:black, self), 0, 3)
-        set_piece(King.new(:black, self), 0, 4)
-        set_piece(Bishop.new(:black, self), 0, 5)
-        set_piece(Knight.new(:black, self), 0, 6)
-        set_piece(Rook.new(:black, self), 0, 7)
-        
-        #black pawns
-        for num in 0..7 do
-            set_piece(Pawn.new(:black, self), 1, num)
-        end
-
-        #white pawns
-        for num in 0..7 do
-            set_piece(Pawn.new(:white, self), 6, num)
-        end
-
-        #white side
-        set_piece(Rook.new(:white, self), 7, 0)
-        set_piece(Knight.new(:white, self), 7, 1)
-        set_piece(Bishop.new(:white, self), 7, 2)
-        set_piece(Queen.new(:white, self), 7, 3)
-        set_piece(King.new(:white, self), 7, 4)
-        set_piece(Bishop.new(:white, self), 7, 5)
-        set_piece(Knight.new(:white, self), 7, 6)
-        set_piece(Rook.new(:white, self), 7, 7)
-
+    def on_board?(row, column)
+        row < grid.length &&
+        column < grid.first.length &&
+        row >= 0 &&
+        column >= 0
     end
+    
+
+    
 end
 
 b = Board.new
 
-b.set_piece(Rook.new(:black, self), 7, 0)
-#b.show_board
+b.set_piece(Rook.new(:black, self, [0,0]), 0, 0)
+b.show_board
 
-pp b.grid[7][0].location
+p b.grid[0][0].available_moves
 
 
