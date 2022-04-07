@@ -1,3 +1,4 @@
+
 require_relative "../lib/piece.rb"
 require_relative "../lib/bishop.rb"
 require_relative "../lib/king.rb"
@@ -5,6 +6,7 @@ require_relative "../lib/knight.rb"
 require_relative "../lib/pawn.rb"
 require_relative "../lib/queen.rb"
 require_relative "../lib/rook.rb"
+
 
 class Board
     attr_accessor :grid
@@ -14,8 +16,18 @@ class Board
         setup_board
     end
 
-    def draw_board
-        puts grid
+    def show_board
+        8.times do |r|
+            puts "------------------------"
+            8.times do |c|
+                piece = grid[r][c]
+                print " #{piece} "
+            end
+            puts ""
+        end
+        puts "------------------------"
+        puts " 0  1  2  3  4  5  6  7"
+
     end
 
     
@@ -63,5 +75,5 @@ class Board
 end
 
 b = Board.new
-b.draw_board
+b.show_board
 
