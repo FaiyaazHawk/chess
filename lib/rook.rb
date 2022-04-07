@@ -19,7 +19,7 @@ class Rook < Piece
             current_row += r
             current_column += c
             break if !board.on_board?(current_row,current_column)
-            if board.empty?(current_row,current_column)
+            if !board.empty?(current_row,current_column)
                 moves << [current_row,current_column]
             end
             end
