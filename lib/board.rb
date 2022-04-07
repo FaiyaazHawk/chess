@@ -13,7 +13,7 @@ class Board
     
     def initialize
         @grid = Array.new(8){Array.new(8, nil)}
-        setup_board
+        #setup_board
     end
 
     def show_board
@@ -38,6 +38,11 @@ class Board
 
     def remove_piece(row, col)
         grid[row][col] = nil
+    end
+
+    def occupied?(row,column)
+        return true if !grid[row][column].nil?
+        false
     end
 
     def setup_board
@@ -75,5 +80,8 @@ class Board
 end
 
 b = Board.new
+
+b.set_piece(Rook.new(:black), 7, 0)
 b.show_board
+
 
