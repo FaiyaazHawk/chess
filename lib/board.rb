@@ -6,7 +6,7 @@ require_relative "../lib/knight.rb"
 require_relative "../lib/pawn.rb"
 require_relative "../lib/queen.rb"
 require_relative "../lib/rook.rb"
-
+require_relative "../lib/slideable.rb"
 
 class Board
     attr_accessor :grid
@@ -58,8 +58,8 @@ end
 
 b = Board.new
 
-b.grid[0][0] = Rook.new(:black, b, [0,0])
-b.grid[0][1] = Rook.new(:white, b, [0,1])
+b.grid[0][0] = Bishop.new(:black, b, [0,0])
+b.grid[5][5] = Bishop.new(:black, b, [5,5])
 
 
 

@@ -12,4 +12,8 @@ class Piece
         board.grid[row][column].color != color
     end
 
+    def friend?(row,column)
+        board.grid[row][column].color == color
+    end
+
 end
