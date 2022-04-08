@@ -51,14 +51,17 @@ class Board
         column >= 0
     end
     
+    def enemy?(row,column)
+        grid[row][column].color != color
+    end
 
     
 end
 
 b = Board.new
 
-b.set_piece(Rook.new(:black, self, [0,0]), 0, 0)
-b.show_board
+b.set_piece(Rook.new(:black, b, [0,0]), 0, 0)
+
 
 p b.grid[0][0].available_moves
 

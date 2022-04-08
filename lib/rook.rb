@@ -10,20 +10,17 @@ class Rook < Piece
 
     def available_moves
         moves = []
-        current_row = position[0]
-        current_column = position[1]
-        
-        move_directions.each do |r,c|
-
-        loop do
-            current_row += r
-            current_column += c
-            break if !board.on_board?(current_row,current_column)
-            if !board.empty?(current_row,current_column)
-                moves << [current_row,current_column]
+        move_directions.each do |(dr,dc)|
+            row = position[0]
+            column = position[1]
+            loop do
+                row += dr
+                column += dc
+                break if !board.on_board?(row, column)
+                if board.empty?(row, column)
+                    moves << [row,column]
+                end            
             end
-            end
-                
         end
         moves
     end
