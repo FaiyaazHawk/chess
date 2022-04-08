@@ -58,12 +58,12 @@ end
 
 b = Board.new
 
-b.grid[0][0] = Bishop.new(:black, b, [0,0])
-b.grid[5][5] = Bishop.new(:black, b, [5,5])
+b.grid[4][4] = Knight.new(:black, b, [4,4])
 
 
 
-p b.grid[0][0].available_moves
+
+p b.grid[4][4].available_moves
 b.show_board
 
 
