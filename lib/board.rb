@@ -58,7 +58,8 @@ end
 
 b = Board.new
 
-b.grid[4][4] = Knight.new(:black, b, [4,4])
+b.grid[4][4] = King.new(:black, b, [4,4])
+
 
 
 

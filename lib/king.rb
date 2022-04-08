@@ -1,5 +1,7 @@
+require_relative "../lib/stepable.rb"
+
 class King < Piece
-    
+    include Stepable
     def to_s
         color == :black ? "\u265a" : "\u2654"
     end
