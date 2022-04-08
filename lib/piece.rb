@@ -8,6 +8,8 @@ class Piece
         
     end
 
-    
+    def enemy?(row,column)
+        board.grid[row][column].color != color
+    end
 
 end

@@ -19,7 +19,11 @@ class Rook < Piece
                 break if !board.on_board?(row, column)
                 if board.empty?(row, column)
                     moves << [row,column]
-                end            
+                end
+                if !board.grid[row][column].nil? && self.enemy?(row,column)
+                    moves << [row,column]
+                    break
+                end
             end
         end
         moves
