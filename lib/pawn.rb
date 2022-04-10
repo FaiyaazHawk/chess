@@ -27,6 +27,9 @@ class Pawn < Piece
             moves << one_forward
         end
 
-        moves
+        if board.empty?(one_forward[0],one_forward[1]) && board.on_board?(one_forward[0], one_forward[1])
+            moves << one_forward
+        end
+        moves.uniq
     end
 end
