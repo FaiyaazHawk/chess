@@ -12,6 +12,8 @@ class Pawn < Piece
         moves = []
         one_forward = position[0] + forward_direction, position[1]
         two_forward = position[0] + (forward_direction * 2), position[1]
+        diag_left = position[0] + forward_direction, position[1] - forward_direction
+        diag_right = position[0] + forward_direction, position[1] + forward_direction
         #black start
         if position[0] == 1 && board.empty?(one_forward[0], one_forward[1]) && board.empty?(two_forward[0], two_forward[1]) && color == :black
             moves << two_forward
@@ -26,10 +28,21 @@ class Pawn < Piece
         if position[0] == 6 && board.empty?(one_forward[0], one_forward[1]) && color == :white
             moves << one_forward
         end
-
+        #regular move
         if board.empty?(one_forward[0],one_forward[1]) && board.on_board?(one_forward[0], one_forward[1])
             moves << one_forward
         end
+        #captures
+        if !board.empty?(diag_left[0], diag_left[1]) && enemy?(diag_left[0], diag_left[1])
+            moves << diag_left
+        end
+        
+        if !board.empty?(diag_right[0], diag_right[1]) && enemy?(diag_right[0], diag_right[1])
+            moves << diag_right
+        end
+
+
+
         moves.uniq
     end
 end

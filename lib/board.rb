@@ -58,7 +58,8 @@ end
 
 b = Board.new
 
-b.grid[1][0] = Pawn.new(:white, b, [1,0])
+b.grid[1][0] = Pawn.new(:black, b, [1,0])
+b.grid[2][1] = Pawn.new(:white, b, [2,1])
 
 
 
