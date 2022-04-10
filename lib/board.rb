@@ -58,13 +58,13 @@ end
 
 b = Board.new
 
-b.grid[4][4] = King.new(:black, b, [4,4])
+b.grid[6][0] = Pawn.new(:white, b, [6,0])
 
 
 
 
 
-p b.grid[4][4].available_moves
+p b.grid[6][0].available_moves
 b.show_board
 
 
