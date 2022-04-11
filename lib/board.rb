@@ -32,13 +32,7 @@ class Board
 
     
 
-    def set_piece(piece, row, col)
-        grid[row][col] = piece
-    end
-
-    def remove_piece(row, col)
-        grid[row][col] = nil
-    end
+    
 
     def empty?(row, column)
         return true if grid[row][column].nil?
@@ -50,6 +44,26 @@ class Board
         row >= 0 &&
         column >= 0
     end
+
+    def move_piece(start_pos, end_pos)
+        #grab the piece
+        piece = grid[start_pos[0]][start_pos[1]]
+        #check if move is valid
+        if !piece.available_moves.include?(end_pos)
+            raise 'Not a valid move'
+        end
+        #check if move on board
+        if !on_board?(end_pos[0],end_pos[1])
+            raise 'Move out of board'
+        end
+        #remove piece from the location
+        grid[start_pos[0]][start_pos[1]] = nil
+        #place the piece
+        grid[end_pos[0]][end_pos[1]] = piece
+        #update piece internal location to end pos
+        piece.position = end_pos
+
+    end
     
     
 
@@ -58,14 +72,15 @@ end
 
 b = Board.new
 
-b.grid[1][0] = Pawn.new(:black, b, [1,0])
-b.grid[2][1] = Pawn.new(:white, b, [2,1])
+b.grid[1][2] = Pawn.new(:black, b, [1,2])
 
+b.grid[2][3] = Pawn.new(:white, b, [2,3])
 
+b.show_board
 
+p b.grid[1][2].available_moves
+b.move_piece([1,2], [2,3])
 
-
-p b.grid[2][1].available_moves
 b.show_board
 
 
