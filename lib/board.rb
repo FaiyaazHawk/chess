@@ -65,7 +65,7 @@ b.grid[2][1] = Pawn.new(:white, b, [2,1])
 
 
 
-p b.grid[1][0].available_moves
+p b.grid[2][1].available_moves
 b.show_board
 
 

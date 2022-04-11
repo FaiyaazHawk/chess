@@ -42,7 +42,7 @@ class Pawn < Piece
         end
 
 
-
-        moves.uniq
+        #filter for unique moves that are on the board
+        moves.uniq.select {|m| board.on_board?(m[0], m[1])}
     end
 end
