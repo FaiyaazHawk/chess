@@ -22,6 +22,9 @@ class Board
             puts "------------------------"
             8.times do |c|
                 piece = grid[r][c]
+                if piece.nil?
+                    print " "
+                end
                 print " #{piece} "
             end
             puts ""
