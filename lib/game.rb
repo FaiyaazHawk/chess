@@ -18,7 +18,17 @@ class Game
     def play
         while !game_over?
             board.show_board
-            puts "It is #{current_player.color}'s turn"
+            take_turn
+            swap_player
+        end
+    end
+
+    def game_over? # need to work on this
+        false
+    end
+
+    def take_turn
+        puts "It is #{current_player.color}'s turn"
             start_pos = nil
             end_pos = nil
             loop do
@@ -41,12 +51,6 @@ class Game
                 puts "Please select a valid move"
             end
             board.move_piece(start_pos,end_pos)
-            swap_player
-        end
-    end
-
-    def game_over? # need to work on this
-        false
     end
 
 
