@@ -8,6 +8,7 @@ require_relative "../lib/queen.rb"
 require_relative "../lib/rook.rb"
 require_relative "../lib/slideable.rb"
 
+
 class Board
     attr_accessor :grid
     
@@ -98,9 +99,5 @@ class Board
     
 end
 
-b = Board.new
 
-
-
-b.show_board
 
