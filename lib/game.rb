@@ -40,8 +40,8 @@ class Game
                     break
                 end
                 puts "#{current_player.color.upcase} piece not selected"
-
             end
+            
             loop do
                 puts "Select a square to move to from: #{board.grid[start_pos[0]][start_pos[1]].available_moves}"
                 end_pos = current_player.get_position
@@ -50,7 +50,7 @@ class Game
                 end
                 puts "Please select a valid move"
             end
-            board.move_piece(start_pos,end_pos)
+        board.move_piece(start_pos,end_pos)
     end
 
 

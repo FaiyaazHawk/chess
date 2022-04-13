@@ -14,10 +14,11 @@ class Board
     
     def initialize
         @grid = Array.new(8){Array.new(8, nil)}
-        start_chess
+        #start_chess
     end
 
     def show_board
+        system 'clear'
         8.times do |r|
             puts "------------------------"
             8.times do |c|
@@ -34,9 +35,6 @@ class Board
 
     end
 
-    
-
-    
 
     def empty?(row, column)
         return true if grid[row][column].nil?
@@ -48,6 +46,26 @@ class Board
         row >= 0 &&
         column >= 0
     end
+
+    def in_check?(color)
+        all_pieces.select {|p| p.color != color}.each do |piece|
+           if piece.available_moves.include?(king_position(color))
+                return true
+           end
+        end    
+        false
+    end
+
+    def all_pieces
+        grid.flatten.reject {|piece| piece.nil?}
+    end
+
+    def king_position(color)
+        king = all_pieces.find {|p| p.color == color && p.is_a?(King)}
+        king.position
+        
+    end
+
 
     def move_piece(start_pos, end_pos)
         #grab the piece
@@ -102,3 +120,9 @@ class Board
     
 end
 
+b = Board.new
+b.grid[0][0] = King.new(:black, b, [0,0])
+b.grid[6][0] = Rook.new(:white, b, [6,0])
+b.grid[7][7] = King.new(:white, b, [7,7])
+p b.in_check?(:black)
+p b.in_check?(:white)
