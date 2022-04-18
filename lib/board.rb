@@ -56,6 +56,24 @@ class Board
         false
     end
 
+    def checkmate?(color)
+        return false if !in_check?(color)
+        same_color_pieces = all_pieces.select {|p| p.color == color}
+        same_color_pieces.each do |piece|
+            piece.available_moves.each do |move|
+                copy_board = Marshal.load(Marshal.dump(self))
+                copy_board.move_piece(piece.position,move)
+                if !copy_board.in_check?(color)
+                    return true
+                end
+            end
+        end
+        # try every available move of every piece of the same color
+        # if any move results in !in_check(color), return false
+        #else return true
+        false
+    end
+
     def all_pieces
         grid.flatten.reject {|piece| piece.nil?}
     end
@@ -122,7 +140,12 @@ end
 
 b = Board.new
 b.grid[0][0] = King.new(:black, b, [0,0])
+
 b.grid[6][0] = Rook.new(:white, b, [6,0])
+b.grid[6][1] = Rook.new(:white, b, [6,1])
 b.grid[7][7] = King.new(:white, b, [7,7])
+b.show_board
 p b.in_check?(:black)
 p b.in_check?(:white)
+puts "black king checkmate"
+p b.checkmate?(:black)
