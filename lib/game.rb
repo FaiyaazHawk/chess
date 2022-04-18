@@ -23,8 +23,11 @@ class Game
         end
     end
 
-    def game_over? # need to work on this
-        false
+    def game_over? 
+        if board.checkmate?(current_player.color)
+            puts "#{current_player.color.upcase} Lost!!"
+            return true
+        end
     end
 
     def take_turn
