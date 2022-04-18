@@ -63,7 +63,7 @@ class Board
             piece.available_moves.each do |move|
                 copy_board = Marshal.load(Marshal.dump(self))
                 copy_board.move_piece(piece.position,move)
-                if !copy_board.in_check?(color)
+                if copy_board.in_check?(color)
                     return true
                 end
             end
@@ -139,7 +139,7 @@ class Board
 end
 
 b = Board.new
-b.grid[0][0] = King.new(:black, b, [0,0])
+b.grid[0][3] = King.new(:black, b, [0,3])
 
 b.grid[6][0] = Rook.new(:white, b, [6,0])
 b.grid[6][1] = Rook.new(:white, b, [6,1])
