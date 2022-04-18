@@ -14,7 +14,7 @@ class Board
     
     def initialize
         @grid = Array.new(8){Array.new(8, nil)}
-        #start_chess
+        start_chess
     end
 
     def show_board
@@ -138,14 +138,4 @@ class Board
     
 end
 
-b = Board.new
-b.grid[0][3] = King.new(:black, b, [0,3])
 
-b.grid[6][0] = Rook.new(:white, b, [6,0])
-b.grid[6][1] = Rook.new(:white, b, [6,1])
-b.grid[7][7] = King.new(:white, b, [7,7])
-b.show_board
-p b.in_check?(:black)
-p b.in_check?(:white)
-puts "black king checkmate"
-p b.checkmate?(:black)
