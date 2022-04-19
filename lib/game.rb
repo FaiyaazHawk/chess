@@ -1,13 +1,14 @@
 require_relative '../lib/board.rb'
 require_relative '../lib/player.rb'
+require 'yaml'
 
 class Game
     attr_reader :player1, :player2, :board
     attr_accessor :current_player
     def initialize ()
         @board = Board.new
-        @player1 = Player.new(:white)
-        @player2 = Player.new(:black)
+        @player1 = Player.new(:white, self)
+        @player2 = Player.new(:black, self)
         @current_player = player1
     end
 
@@ -23,6 +24,23 @@ class Game
         end
     end
 
+    def save_game
+        Dir.mkdir('saved') unless Dir.exist?('saved')
+        File.open("./saved/saved_game.yml", 'w') do |f|
+            f.write(YAML.dump(self))
+        end
+        puts "The game is saved"
+        exit
+    end
+
+    def load_game
+        yaml = YAML.load_file("./saved/saved_game.yml")
+        @board = yaml.board
+        @player1 = yaml.player1
+        @player2 = yaml.player2
+        @current_player = yaml.current_player
+    end
+
     def game_over? 
         if board.checkmate?(current_player.color)
             puts "#{current_player.color.upcase} Lost!!"
@@ -32,6 +50,9 @@ class Game
 
     def take_turn
         puts "It is #{current_player.color}'s turn"
+        if board.in_check?(current_player.color)
+            puts "#{current_player.color.upcase} is in check."
+        end
             start_pos = nil
             end_pos = nil
             loop do

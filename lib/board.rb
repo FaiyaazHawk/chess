@@ -32,9 +32,11 @@ class Board
         end
         puts "------------------------"
         puts " 0  1  2  3  4  5  6  7"
+        puts "Save with 's' and Load with 'l'"
 
     end
 
+    
 
     def empty?(row, column)
         return true if grid[row][column].nil?
