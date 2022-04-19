@@ -34,6 +34,8 @@ class Game
     end
 
     def load_game
+        
+        Game.new
         yaml = YAML.load_file("./saved/saved_game.yml")
         @board = yaml.board
         @player1 = yaml.player1
