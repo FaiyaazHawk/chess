@@ -16,6 +16,20 @@ class Game
         self.current_player = (current_player == player1 ? player2 : player1)
     end
 
+    def play_game
+        puts "Welcome to 2 player chess in the command line"
+        puts "Select 1 for new game or 2 to load saved game"
+        input = gets.chomp.to_i 
+        until input.between?(1,2) || !input.nil?
+            puts "Invalid input"
+        end
+        case input
+        when 1
+            play
+        when 2
+            load_game
+        end
+    end
     def play
         while !game_over?
             board.show_board
@@ -34,13 +48,13 @@ class Game
     end
 
     def load_game
-        
-        Game.new
         yaml = YAML.load_file("./saved/saved_game.yml")
+        Game.new
         @board = yaml.board
         @player1 = yaml.player1
         @player2 = yaml.player2
         @current_player = yaml.current_player
+        play
     end
 
     def game_over? 

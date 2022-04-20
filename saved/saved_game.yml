@@ -7,7 +7,12 @@ board: &1 !ruby/object:Board
       position:
       - 0
       - 0
-    -
+    - !ruby/object:Knight
+      color: :black
+      board: *1
+      position:
+      - 0
+      - 1
     - !ruby/object:Bishop
       color: :black
       board: *1
@@ -44,12 +49,7 @@ board: &1 !ruby/object:Board
       position:
       - 0
       - 7
-  - - !ruby/object:Pawn
-      color: :black
-      board: *1
-      position:
-      - 1
-      - 0
+  - -
     - !ruby/object:Pawn
       color: :black
       board: *1
@@ -62,7 +62,7 @@ board: &1 !ruby/object:Board
       position:
       - 1
       - 2
-    - !ruby/object:Knight
+    - !ruby/object:Pawn
       color: :black
       board: *1
       position:
@@ -74,12 +74,7 @@ board: &1 !ruby/object:Board
       position:
       - 1
       - 4
-    - !ruby/object:Pawn
-      color: :black
-      board: *1
-      position:
-      - 1
-      - 5
+    -
     - !ruby/object:Pawn
       color: :black
       board: *1
@@ -100,7 +95,14 @@ board: &1 !ruby/object:Board
     -
     -
     -
-  - -
+  - - !ruby/object:Pawn
+      color: :black
+      board: *1
+      position:
+      - 3
+      - 0
+    -
+    -
     -
     -
     - !ruby/object:Pawn
@@ -108,9 +110,7 @@ board: &1 !ruby/object:Board
       board: *1
       position:
       - 3
-      - 3
-    -
-    -
+      - 5
     -
     -
   - -
@@ -122,12 +122,7 @@ board: &1 !ruby/object:Board
       - 4
       - 2
     -
-    - !ruby/object:Pawn
-      color: :white
-      board: *1
-      position:
-      - 4
-      - 4
+    -
     -
     -
     -
@@ -135,7 +130,12 @@ board: &1 !ruby/object:Board
     -
     -
     -
-    -
+    - !ruby/object:Pawn
+      color: :white
+      board: *1
+      position:
+      - 5
+      - 4
     -
     -
     -

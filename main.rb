@@ -1,4 +1,4 @@
 require_relative './lib/game.rb'
 
 g = Game.new
-g.play
+g.play_game

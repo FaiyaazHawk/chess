@@ -11,8 +11,9 @@ class Player
         input = gets.chomp
         if input == 's'
             @game.save_game
-        elsif input == 'l'
-            @game.load_game
+        elsif input == 'q'
+            system 'clear'
+            exit
         end
         input
                     .split(",") #remove comma get array

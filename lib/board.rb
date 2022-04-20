@@ -32,7 +32,7 @@ class Board
         end
         puts "------------------------"
         puts " 0  1  2  3  4  5  6  7"
-        puts "Save with 's' and Load with 'l'"
+        puts "Save with 's' and quit with 'q'"
 
     end
 
@@ -65,10 +65,11 @@ class Board
             piece.available_moves.each do |move|
                 copy_board = Marshal.load(Marshal.dump(self))
                 copy_board.move_piece(piece.position,move)
-                if copy_board.in_check?(color)
-                    return true
+                if !copy_board.in_check?(color)
+                    return false
                 end
             end
+            true
         end
         # try every available move of every piece of the same color
         # if any move results in !in_check(color), return false
