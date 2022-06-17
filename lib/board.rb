@@ -50,7 +50,8 @@ class Board
     end
     false
   end
-
+  #checkmate verification by collecting the same colored pieces, duping the board and checking if there is any moves
+  #that takes king out of check
   def checkmate?(color)
     return false unless in_check?(color)
 
@@ -63,9 +64,6 @@ class Board
       end
       true
     end
-    # try every available move of every piece of the same color
-    # if any move results in !in_check(color), return false
-    # else return true
     false
   end
 

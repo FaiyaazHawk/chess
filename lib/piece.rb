@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+#general piece class inherited by all. includes FOF detection
 class Piece
   attr_reader :color, :board
   attr_accessor :position

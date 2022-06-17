@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+#for pieces that can slide in open directions till it gets to a piece
 module Slideable
   def available_moves
     moves = []

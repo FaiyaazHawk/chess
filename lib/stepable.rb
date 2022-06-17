@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+#for pieces that have a definite step they can take (including over pieces)
 module Stepable
   def available_moves
     moves = []
