@@ -10,3 +10,4 @@ Still needs work on following: (will eventually comeback to it)
  - en passant
  - castling
  - pawn promotion
+ - notation based input instead of array based input
